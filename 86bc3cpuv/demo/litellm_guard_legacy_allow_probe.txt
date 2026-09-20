@@ -1,0 +1,6 @@
+plugin_version='1.0.0'      HTTP=200 modify_keys=False body={"allowed": true, "violated_rules": null}
+plugin_version='1.101.0'    HTTP=200 modify_keys=False body={"allowed": true, "violated_rules": null}
+plugin_version='1.102.0'    HTTP=200 modify_keys=False body={"allowed": true, "violated_rules": null}
+plugin_version='2.0.0'      HTTP=200 modify_keys=False body={"allowed": true, "violated_rules": null}
+plugin_version='99.0.0'     HTTP=200 modify_keys=False body={"allowed": true, "violated_rules": null}
+plugin_version=None         HTTP=200 modify_keys=False body={"allowed": true, "violated_rules": null}

@@ -1,0 +1,2 @@
+=== 20:44:58 /v1/chat/completions
+{"messages":[{"role":"user","content":"My SSN is 529-11-4562 and my card is 4532751525684012."}],"model":"echo-model"}
