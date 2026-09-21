@@ -1,0 +1,16 @@
+# DECISIVE WIRE EVIDENCE — post-guardrail data still contains RAW PII (no masking applied)
+# Source: cleanroom LiteLLM proxy (port 4013) detailed_debug log; mask-configured request
+# Rule: Sensitive Data -> [U.S. SSN, Credit Card] -> Mask -> Input & Output (policy 'Cleanroom Mask R13', verified persisted in UI)
+
+## 1. Inbound caller request (raw PII sent by client):
+'content': 'My SSN is 529-11-4562 and my card is 4532751525684012.'
+
+## 2. Data RETURNED FROM the pre_call guardrail hook for that same request (should be [ANONYMIZED_*] if masking worked):
+'content': 'My SSN is 529-11-4562 and my card is 4532751525684012.'
+   ^ still RAW: no [ANONYMIZED_SSN_x] / [ANONYMIZED_CREDIT_CARD_x] placeholder
+
+## 3. Guardrail verdict on the PII request:  guardrail_response='allow', masked_entity_count=None
+## 4. ANONYMIZED placeholders in entire proxy log:  0
+
+## CONCLUSION: The guard detector FIRES (Block variant returns HTTP 400), but the MASK action returns no
+## modified_prompt/modified_response -> raw PII forwarded upstream. Masking is NOT active on Onyx staging.
